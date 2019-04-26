@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body onload="resizeCanvas();">
+	<br>
+	<h1 align="center">Triangle N (1 - 25): <input style="font-size:75%; font-weight:bold" onchange="range()" type="number" id="sizeT" min="1" max="25">
+												 
+											   <input style="font-size:75%; font-weight:bold" type="submit" onclick="redraw();" value="OK"></h1>
+	<h1 align="center" id="res">-</h1>
+	<p align="center"><canvas id="myC" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas></p>
+
+
+
+	<script>
+		var maxval = 25;
+		
+		function range()
+		{
+			var num = document.getElementById("sizeT").value;
+			if (num > maxval) document.getElementById("sizeT").value = maxval;
+			if (num < 1) document.getElementById("sizeT").value = 1;
+		}
+		
+		function resizeCanvas()
+		{
+			var canvs = document.getElementById("myC");
+			canvs.width = window.innerWidth*0.6;
+			canvs.height = window.innerHeight*0.75;
+		}
+		
+		function redraw() 
+		{
+			var N = document.getElementById("sizeT").value;
+			if (N == null) N = 1;
+
+			var c = document.getElementById("myC");
+			var cW = c.width;
+			var cH = c.height;
+			var ctx = c.getContext("2d");
+			
+			ctx.clearRect(0, 0, cW, cH);
+			ctx.lineWidth = 2;
+			
+			var a = 2*0.95*cH*Math.sqrt(3)/3;
+			var a1 = a/N;
+			
+			ctx.beginPath();
+			ctx.moveTo(cW/2, 10);
+			ctx.lineTo(cW/2 + a/2, 10 + cH*0.95);
+			ctx.lineTo(cW/2 - a/2, 10 + cH*0.95);
+			ctx.lineTo(cW/2, 10);
+			
+			for (var j = 1; j < N; j++) {
+				ctx.moveTo(cW/2 - a/2 + a1*j, 10+cH*0.95);
+				ctx.lineTo(cW/2 - a/2 + a1*j*0.5, 10+cH*0.95 - a1*j*Math.sqrt(3)/2);
+				ctx.lineTo(cW/2 + a/2 - a1*j*0.5, 10+cH*0.95 - a1*j*Math.sqrt(3)/2);
+				ctx.lineTo(cW/2 + a/2 - a1*j, 10+cH*0.95);
+			}
+
+			ctx.stroke();
+			
+			var numres = 0;
+			for (var i = 1; i <= N; i++) {
+				var psum1 = (N-i+1)*(N-i+2)/2;
+				var psum2 = (N-2*i) < 0 ? 0 : (N-2*i+1)*(N-2*i+2)/2;
+				numres += psum1+psum2;
+			}
+			res = document.getElementById("res");
+			res.innerHTML = numres;
+			
+		}
+	</script>
+
+</body>
+</html>
+
+
