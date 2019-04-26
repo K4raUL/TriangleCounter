@@ -14,7 +14,7 @@
 
    		 </style>
 	<br>
-	<h1 align="center">Triangle N (1 - 32): <input style="font-size:75%; font-weight:bold" onchange="range()" type="number" id="sizeT" min="1" max="32">
+	<h1 align="center">Triangle N (1 - 10000): <input style="font-size:75%; font-weight:bold" onchange="range()" type="number" id="sizeT" min="1" max="10000">
 												 
 											   <input style="font-size:75%; font-weight:bold" type="submit" onclick="redraw();" value="OK"></h1>
 	<h1 align="center" style="color:red;" id="res">-</h1>
@@ -23,7 +23,7 @@
 
 
 	<script>
-		var maxval = 32;
+		var maxval = 10000;
 		
 		function range()
 		{
@@ -58,20 +58,20 @@
 			ctx.beginPath();
 			ctx.moveTo(cW/2, 10);
 			ctx.lineTo(cW/2 + a/2, 10 + cH*0.95);
-			ctx.arc(cW/2 + a/2, 10 + cH*0.95, 2, 0, 2 * Math.PI);
+			//ctx.arc(cW/2 + a/2, 10 + cH*0.95, 2, 0, 2 * Math.PI);
 			ctx.lineTo(cW/2 - a/2, 10 + cH*0.95);
-			ctx.arc(cW/2 - a/2, 10 + cH*0.95, 2, 0, 2 * Math.PI);
+			//ctx.arc(cW/2 - a/2, 10 + cH*0.95, 2, 0, 2 * Math.PI);
 			ctx.lineTo(cW/2, 10);
-			ctx.arc(cW/2, 10, 2, 0, 2 * Math.PI);
+			//ctx.arc(cW/2, 10, 2, 0, 2 * Math.PI);
 			
 			for (var j = 1; j < N; j++) {
 				ctx.moveTo(cW/2 - a/2 + a1*j, 10+cH*0.95);
 				ctx.lineTo(cW/2 - a/2 + a1*j*0.5, 10+cH*0.95 - a1*j*Math.sqrt(3)/2);
-				ctx.arc(cW/2 - a/2 + a1*j*0.5, 10+cH*0.95 - a1*j*Math.sqrt(3)/2, 2, 0, 2 * Math.PI);
+				//ctx.arc(cW/2 - a/2 + a1*j*0.5, 10+cH*0.95 - a1*j*Math.sqrt(3)/2, 2, 0, 2 * Math.PI);
 				ctx.lineTo(cW/2 + a/2 - a1*j*0.5, 10+cH*0.95 - a1*j*Math.sqrt(3)/2);
-				ctx.arc(cW/2 + a/2 - a1*j*0.5, 10+cH*0.95 - a1*j*Math.sqrt(3)/2, 2, 0, 2 * Math.PI);
+				//ctx.arc(cW/2 + a/2 - a1*j*0.5, 10+cH*0.95 - a1*j*Math.sqrt(3)/2, 2, 0, 2 * Math.PI);
 				ctx.lineTo(cW/2 + a/2 - a1*j, 10+cH*0.95);
-				ctx.arc(cW/2 + a/2 - a1*j, 10+cH*0.95, 2, 0, 2 * Math.PI);
+				//ctx.arc(cW/2 + a/2 - a1*j, 10+cH*0.95, 2, 0, 2 * Math.PI);
 			}
 
 			ctx.stroke();
