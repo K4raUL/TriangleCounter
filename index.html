@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
 <body onload="resizeCanvas();">
+		<style type="text/css">
+
+		canvas, input {
+		user-select: none;
+        	-moz-user-select: none;
+        	-khtml-user-select: none;
+        	-webkit-user-select: none;
+        	-o-user-select: none;
+		-ms-user-select: none;
+		}
+
+   		 </style>
 	<br>
 	<h1 align="center">Triangle N (1 - 25): <input style="font-size:75%; font-weight:bold" onchange="range()" type="number" id="sizeT" min="1" max="25">
 												 
